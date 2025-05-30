@@ -1,0 +1,10 @@
+Admin,USER19,Muhammad Kamal,kamal@live.iium,01132123414,password
+Student,USER20,Syuib bin Sufyan,syuib@live.iium,01123554565,password
+Staff,USER21,Luman Abdul Rahman,luqman@live.iium,0193754568,password
+Staff,USER22,Nisa' Binti Syukur,nisa@live.iium,0148736489,password
+Student,USER23,Syuib bin Sufyan,a@a.a,01123554565,a
+STD,USER24,New User,email@example.com,0123456789,pass123
+STD,USER25,New User,email@example.com,0123456789,pass123
+Student,USER26,z,z@z.z,123,123
+Student,USER27,testingbro,z@z.z,123,123
+Student,USER28,atestingbro,z@z.z,123,123
