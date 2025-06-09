@@ -23,6 +23,7 @@ public class HistoryPage {
     private final TableView<Reservation> table = new TableView<>();
     private final ObservableList<Reservation> userReservations = FXCollections.observableArrayList();
     private ArrayList<Reservation> reservations;
+    private ArrayList<Venue> venues;
 
 
     public HistoryPage(App app, User user) {
@@ -36,7 +37,6 @@ public class HistoryPage {
         try {
             FileHandler fileHandler = new FileHandler();
             reservations = fileHandler.readReservation();
-
             for (Reservation res : reservations) {
                 if (res.getUserID().equals(user.getUserID())) {
                     userReservations.add(res);
@@ -48,6 +48,21 @@ public class HistoryPage {
         }
     }
 
+    public String getVenueName(String venueID){
+        try{
+            FileHandler fileHandler = new FileHandler();
+            venues = fileHandler.readVenue();
+            for (Venue venue:venues){
+                if (venueID.equals(venue.getVenueID())){
+                    return venue.getName();
+                }
+            
+        }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     private void createUI() {
         Label title = new Label("Reservation History for " + user.getEmail());
 
@@ -63,8 +78,8 @@ public class HistoryPage {
         endCol.setCellValueFactory(data -> new SimpleStringProperty(
                 new SimpleDateFormat("HH:mm").format(data.getValue().getEndTime())));
 
-        TableColumn<Reservation, String> venueCol = new TableColumn<>("Venue ID");
-        venueCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getVenueID()));
+        TableColumn<Reservation, String> venueCol = new TableColumn<>("Venue Name");
+        venueCol.setCellValueFactory(data -> new SimpleStringProperty(getVenueName(data.getValue().getVenueID())));
 
         TableColumn<Reservation, String> statusCol = new TableColumn<>("Status");
         statusCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getStatus()));
@@ -98,7 +113,7 @@ public class HistoryPage {
                     ex.printStackTrace();
                 }
                 table.refresh();
-                System.out.println("Reservation " + selected.getReservationID() + " canceled.");
+                System.out.println("Reservation " + selected.getReservationID() + " Canceled.");
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Please select a reservation to cancel.");
                 alert.showAndWait();

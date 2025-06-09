@@ -37,35 +37,28 @@ public class VenueFormPage {
             if(nameField.getText().isEmpty()){
                 System.out.println("name required");
             }
-            
             if(capacityField.getText().isEmpty()){
                 System.out.println("capacity required");
             }
-            
             if(locationField.getText().isEmpty()){
                 System.out.println("location required");
             }
-            
             try {
                 FileHandler fileHandler = new FileHandler();
                 venues = fileHandler.readVenue();
-
                 if (venueToEdit != null) {
                     venues.removeIf(v -> v.getVenueID().equals(venueToEdit.getVenueID()));
                     venues.add(new Venue(venueToEdit.getVenueID(), nameField.getText(),
                         locationField.getText(),
                         Integer.parseInt(capacityField.getText()), 
                         availableCheck.isSelected()));
-                } else {
-                    
+                } else {   
                     venues.add(new Venue(nameField.getText(),
                         locationField.getText(),
                         Integer.parseInt(capacityField.getText()), 
                         availableCheck.isSelected()));
 
                 }
-                
-                
                 fileHandler.saveVenueToFile(venues);
 
                 app.showUpdateVenuesPage(adminUser);  // Navigate back

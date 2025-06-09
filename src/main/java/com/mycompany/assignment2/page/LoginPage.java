@@ -36,14 +36,18 @@ public class LoginPage {
             String password = passwordField.getText();
             
             if (!email.isEmpty() && !password.isEmpty()) {
+                Boolean logError = true;
+                
                 for (User user : users){
                     if (email.equalsIgnoreCase(user.getEmail())){
                         if("admin".equalsIgnoreCase(user.getRole())){
                             if (password.equalsIgnoreCase(user.getPassword())) {
                                 app.showAdminPage(user);
+                                logError = false;
                             }
                         } else {
                             if (password.equalsIgnoreCase(user.getPassword())) {
+                                logError = false;
                                 try {
                                     app.showReservationPage(user);
                                 } catch (FileNotFoundException ex) {
@@ -51,10 +55,16 @@ public class LoginPage {
                                 } catch (ParseException ex) {
                                     ex.printStackTrace();
                                 }
-                            }
+                            } 
                         }
                     }
                 }
+                
+                if (logError){
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Wrong password or email.", ButtonType.OK);
+                    alert.showAndWait();
+                }
+                
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter both email and password.", ButtonType.OK);
                 alert.showAndWait();

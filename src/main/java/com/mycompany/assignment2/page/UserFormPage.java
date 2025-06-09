@@ -35,8 +35,18 @@ public class UserFormPage {
                 users = fileHandler.readUser();
                 if (editingUser != null) {
                     users.removeIf(u -> u.getUserID().equals(editingUser.getUserID()));
-                }
-                users.add(new User(
+                    users.add(new User(
+                        nameField.getText(),
+                        emailField.getText(),
+                        phoneField.getText(),
+                        passwordField.getText(),
+                        roleCombo.getValue(),
+                        editingUser.getUserID()
+                    ));
+                    fileHandler.saveUsersToFile(users);
+                    app.showUpdateUsersPage(adminUser);
+                }else{
+                    users.add(new User(
                     nameField.getText(),
                     emailField.getText(),
                     phoneField.getText(),
@@ -44,7 +54,9 @@ public class UserFormPage {
                     roleCombo.getValue()
                 ));
                 fileHandler.saveUsersToFile(users);
-
+                app.showUpdateUsersPage(adminUser);
+                }
+                
             } catch (Exception ex) {
                 ex.printStackTrace();
                 new Alert(Alert.AlertType.ERROR, "Error saving user.").showAndWait();
@@ -67,16 +79,6 @@ public class UserFormPage {
         view.setPadding(new Insets(20));
         view.getChildren().addAll(titleLabel, grid, saveButton, backButton);
     }
-
-    private void SvaeChanges() {
-       try {
-           FileHandler fileHandler = new FileHandler();
-           users.clear();
-           users.addAll(fileHandler.readUser());
-       } catch (Exception e) {
-           e.printStackTrace();
-       }
-   }
     
     public VBox getView() {
         return view;

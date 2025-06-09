@@ -99,7 +99,7 @@ public class Reservation {
 
     public void cancelReservation(Reservation reserve) {
         reserve.active = false;
-        reserve.status = "cancel";
+        reserve.status = "Cancel";
     }
 
     public String getVenueID() {

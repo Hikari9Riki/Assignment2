@@ -13,6 +13,7 @@ import java.util.Date;
 public class User {
    
     static int counter = 0;
+    public String[] strCounter ;
     protected String userID;
     public String name;
     public String email;
@@ -35,15 +36,15 @@ public class User {
         
     }
     
-    public User(String name, String email, String phone, String password, String role, String id) {
-        counter++;
-        this.userID = "USER"+ counter;
+    public User(String name, String email, String phone, String password, String role, String userID) {
+        strCounter = userID.split("(?<=\\D)(?=\\d)");
+        counter = Integer.parseInt(strCounter[1]);
+        this.userID = userID;
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.password = password;
         this.role  = role;
-        this.id = id;
         
     }
     
@@ -80,6 +81,10 @@ public class User {
 
     public String getRole() {
         return role;
+    }
+
+    public String getName() {
+        return name;
     }
     
     

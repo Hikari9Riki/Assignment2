@@ -21,6 +21,8 @@ public class AdminPage {
     private final TableView<Reservation> tableView = new TableView<>();
     private final ObservableList<Reservation> allReservations = FXCollections.observableArrayList();
     private ArrayList<Reservation> reservations;
+    private ArrayList<Venue> venues;
+    private ArrayList<User> users;
 
     public AdminPage(App app, User adminUser) {
         this.app = app;
@@ -28,6 +30,38 @@ public class AdminPage {
         createUI();
     }
 
+    public String getVenueName(String venueID){
+        try{
+            FileHandler fileHandler = new FileHandler();
+            venues = fileHandler.readVenue();
+            for (Venue venue:venues){
+                if (venueID.equals(venue.getVenueID())){
+                    return venue.getName();
+                }
+            
+        }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public String getUserEmail(String userID){
+        try{
+            FileHandler fileHandler = new FileHandler();
+            users = fileHandler.readUser();
+            for (User user:users){
+                if (userID.equals(user.getUserID())){
+                    return user.getEmail();
+                }
+            
+        }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
     private void createUI() {
         try {
             FileHandler fileHandler = new FileHandler();
@@ -45,8 +79,8 @@ public class AdminPage {
         TableColumn<Reservation, String> reservationCol = new TableColumn<>("Reservation ID");
         reservationCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getReservationID()));
         
-        TableColumn<Reservation, String> userCol = new TableColumn<>("User ID");
-        userCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getUserID()));
+        TableColumn<Reservation, String> userCol = new TableColumn<>("User");
+        userCol.setCellValueFactory(data -> new SimpleStringProperty(getUserEmail(data.getValue().getUserID())));
 
         TableColumn<Reservation, String> dateCol = new TableColumn<>("Date");
         dateCol.setCellValueFactory(data -> new SimpleStringProperty(
@@ -64,7 +98,7 @@ public class AdminPage {
         ));
 
         TableColumn<Reservation, String> venueCol = new TableColumn<>("Venue");
-        venueCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getVenueID()));
+        venueCol.setCellValueFactory(data -> new SimpleStringProperty(getVenueName(data.getValue().getVenueID())));
 
         TableColumn<Reservation, String> statusCol = new TableColumn<>("Status");
         statusCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getStatus()));

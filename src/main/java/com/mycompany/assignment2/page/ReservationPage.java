@@ -87,7 +87,8 @@ public class ReservationPage {
                 Date dateOnly = new java.text.SimpleDateFormat("yyyy-MM-dd").parse(selectedDate);
 
                 // Create new reservation
-                Reservation newRes = new Reservation(dateOnly, startDateTime, endDateTime, selectedVenue.getVenueID(), user.getUserID());
+                Reservation newRes = new Reservation(dateOnly, startDateTime, 
+                        endDateTime, selectedVenue.getVenueID(), user.getUserID());
                 System.out.println(newRes);
                 // Check and add
                 if (newRes.checkAvailability(reservations)) {
