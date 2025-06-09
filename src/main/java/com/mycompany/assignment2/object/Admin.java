@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.assignment2;
+package com.mycompany.assignment2.object;
 
 /**
  *
@@ -24,14 +24,9 @@ public class Admin extends Staff {
     public void approveReservation(Reservation reserve){
         reserve.setStatus("Approve");
     }
-
-        
+    
     public void rejectReservation(Reservation reserve){
         reserve.setStatus("Decline");
-    }
-    
-    public void updateVenue(Venue venue){
-        
     }
     
     @Override

@@ -1,5 +1,7 @@
-package com.mycompany.assignment2;
+package com.mycompany.assignment2.page;
 
+import com.mycompany.assignment2.*;
+import com.mycompany.assignment2.object.*;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;

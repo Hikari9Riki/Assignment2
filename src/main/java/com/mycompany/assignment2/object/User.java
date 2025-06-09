@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.assignment2;
+package com.mycompany.assignment2.object;
 
 import java.util.Date;
 
@@ -14,11 +14,11 @@ public class User {
    
     static int counter = 0;
     protected String userID;
-    protected String name;
-    protected String email;
-    protected String phone;
-    protected String password;
-    protected String role;
+    public String name;
+    public String email;
+    public String phone;
+    public String password;
+    public String role;
     private String id;
     protected boolean login = false;
     protected boolean isLoggedIn;
@@ -56,14 +56,6 @@ public class User {
     public void logout() {
         isLoggedIn = false;
         System.out.println(name + (" logged out successfully"));
-    }
-
-    public void makeReservation(Date date, Date startTime, Date endTime, String status, Venue venue) {
-        
-    }
-
-    public void cancelReservation() {
-        // Implementation
     }
     
     public void setUserID(String userID) {

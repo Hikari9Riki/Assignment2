@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.assignment2;
+package com.mycompany.assignment2.object;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -154,7 +154,8 @@ public class FileHandler {
             String available = parts[4].trim();
             
             
-            Venue venue = new Venue(venueID, name, location,  Integer.parseInt(capacity), Boolean.parseBoolean(available));
+            Venue venue = new Venue(venueID, name, location,
+                    Integer.parseInt(capacity), Boolean.parseBoolean(available));
             venues.add(venue);
                     
         }

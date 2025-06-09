@@ -1,5 +1,7 @@
-package com.mycompany.assignment2;
+package com.mycompany.assignment2.page;
 
+import com.mycompany.assignment2.*;
+import com.mycompany.assignment2.object.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
@@ -36,10 +38,13 @@ public class AdminPage {
         }
 
         ComboBox<String> filterCombo = new ComboBox<>();
-        filterCombo.getItems().addAll("All", "Pending", "Approved", "Declined");
+        filterCombo.getItems().addAll("All", "Pending", "Approved", "Declined"); 
         filterCombo.setValue("All");
         filterCombo.setOnAction(e -> applyFilter(filterCombo.getValue()));
-
+        
+        TableColumn<Reservation, String> reservationCol = new TableColumn<>("Reservation ID");
+        reservationCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getReservationID()));
+        
         TableColumn<Reservation, String> userCol = new TableColumn<>("User ID");
         userCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getUserID()));
 
@@ -64,7 +69,7 @@ public class AdminPage {
         TableColumn<Reservation, String> statusCol = new TableColumn<>("Status");
         statusCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getStatus()));
 
-        tableView.getColumns().addAll(userCol, dateCol, startCol, endCol, venueCol, statusCol);
+        tableView.getColumns().addAll(reservationCol,userCol, dateCol, startCol, endCol, venueCol, statusCol);
         tableView.setItems(allReservations);
 
         // Buttons

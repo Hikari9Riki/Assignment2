@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.assignment2;
+package com.mycompany.assignment2.object;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -96,27 +96,10 @@ public class Reservation {
         return endTime;
     }
 
-    public void createReservation() {
-        
-    }
-
-    public void updateReservation() {
-        // Implementation
-    }
 
     public void cancelReservation(Reservation reserve) {
         reserve.active = false;
         reserve.status = "cancel";
-    }
-    
-    public void declineReservation(Reservation reserve) {
-        reserve.active = false;
-        reserve.status = "decline";
-    }
-    
-    public void approveReservation(Reservation reserve) {
-        reserve.active = false;
-        reserve.status = "approve";
     }
 
     public String getVenueID() {
@@ -166,6 +149,7 @@ public class Reservation {
     public String toDataString() {
         SimpleDateFormat dfDate = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat dfTime = new SimpleDateFormat("HH:mm");
-        return reservationID + "," + dfDate.format(date) + "," + dfTime.format(startTime) + "," + dfTime.format(endTime) + "," + status + "," + Boolean.toString(active) + "," + venueID + "," + userID;
+        return reservationID + "," + dfDate.format(date) + "," + dfTime.format(startTime) +
+                "," + dfTime.format(endTime) + "," + status + "," + Boolean.toString(active) + "," + venueID + "," + userID;
     }
 }

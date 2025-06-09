@@ -1,10 +1,13 @@
 package com.mycompany.assignment2;
 
+import com.mycompany.assignment2.object.*;
+import com.mycompany.assignment2.page.*;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 
 public class App extends Application {
     private Stage primaryStage;

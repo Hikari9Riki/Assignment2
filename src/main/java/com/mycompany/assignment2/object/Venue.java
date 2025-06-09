@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.assignment2;
+package com.mycompany.assignment2.object;
 
 /**
  *
@@ -69,17 +69,6 @@ public class Venue {
         return available;
     }
 
-    public void updateAvailability(boolean available) {
-        this.available = available;
-    }
-
-    public void addVenue() {
-        // Implementation
-    }
-
-    public void updateVenueDetails() {
-        // Implementation
-    }
     public String getName() {
         return name;
     }

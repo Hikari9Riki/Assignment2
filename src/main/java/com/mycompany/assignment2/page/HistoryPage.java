@@ -1,5 +1,7 @@
-package com.mycompany.assignment2;
+package com.mycompany.assignment2.page;
 
+import com.mycompany.assignment2.*;
+import com.mycompany.assignment2.object.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
