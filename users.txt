@@ -11,4 +11,5 @@ Student,USER73,atestingbro,z@z.z,123,123
 Student,USER74,shizuka,shizuka@live.iium,01112353321,password
 Student,USER75,shizuka,shizuka@live.iium,01112353321,password
 Student,USER76,shizuka,shizuka@live.iium,01112353321,password
-Student,USER78,sama,sama@sama,0121312311,123
+Student,USER78,okay,sama@sama,0121312311,123
+Student,USER79,amer,amer@okay,0123123,123

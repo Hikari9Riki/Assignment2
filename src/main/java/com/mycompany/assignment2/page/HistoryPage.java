@@ -39,7 +39,11 @@ public class HistoryPage {
             reservations = fileHandler.readReservation();
             for (Reservation res : reservations) {
                 if (res.getUserID().equals(user.getUserID())) {
-                    userReservations.add(res);
+                    if (res.getStatus().equalsIgnoreCase("cancel")){
+                        continue;
+                    } else {
+                        userReservations.add(res);
+                    }
                 }
             }
 

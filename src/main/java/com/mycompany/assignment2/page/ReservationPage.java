@@ -66,8 +66,15 @@ public class ReservationPage {
         Spinner<String> endTime = new Spinner<>(new SpinnerValueFactory.ListSpinnerValueFactory<>(
                 javafx.collections.FXCollections.observableArrayList("09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00")));
 
-        Button checkButton = new Button("Check Availability");
-        
+        Button checkButton = new Button("Make Reservation");
+        Button logoutButton = new Button("Logout");
+        logoutButton.setOnAction(e -> {
+            try {
+                app.showLoginPage();
+            } catch (FileNotFoundException ex) {
+                System.getLogger(ReservationPage.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            }
+        });
         checkButton.setOnAction(e -> {
             try {
                 Venue selectedVenue = venueSelector.getValue();
@@ -119,7 +126,7 @@ public class ReservationPage {
                 new Label("Date:"), datePicker,
                 new Label("Start Time:"), startTime,
                 new Label("End Time:"), endTime,
-                checkButton, historyButton
+                checkButton, historyButton, logoutButton
         );
     }
 

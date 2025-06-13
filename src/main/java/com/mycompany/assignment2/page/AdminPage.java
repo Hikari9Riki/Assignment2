@@ -37,9 +37,9 @@ public class AdminPage {
             for (Venue venue:venues){
                 if (venueID.equals(venue.getVenueID())){
                     return venue.getName();
-                }
-            
+                }  
         }
+            
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -72,7 +72,7 @@ public class AdminPage {
         }
 
         ComboBox<String> filterCombo = new ComboBox<>();
-        filterCombo.getItems().addAll("All", "Pending", "Approved", "Declined"); 
+        filterCombo.getItems().addAll("All", "Pending", "Approved", "Declined", "Cancel"); 
         filterCombo.setValue("All");
         filterCombo.setOnAction(e -> applyFilter(filterCombo.getValue()));
         
@@ -125,7 +125,16 @@ public class AdminPage {
         Button updateVenuesButton = new Button("Update Venues");
         updateVenuesButton.setOnAction(e -> app.showUpdateVenuesPage(adminUser));
 
-        HBox adminNavButtons = new HBox(10, updateUsersButton, updateVenuesButton);
+        Button logoutButton = new Button("Logout");
+        logoutButton.setOnAction(e -> {
+            try {
+                app.showLoginPage();
+            } catch (FileNotFoundException ex) {
+                System.getLogger(ReservationPage.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            }
+        });
+        
+        HBox adminNavButtons = new HBox(10, updateUsersButton, updateVenuesButton,logoutButton);
         adminNavButtons.setPadding(new Insets(10));
         adminNavButtons.setStyle("-fx-alignment: center;");
         
